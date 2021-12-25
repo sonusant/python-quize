@@ -278,8 +278,9 @@ def ans(name):
     quiz = Quiz.query.filter_by(uniq_name=name).first()
     result=(quiz.q_1)+(quiz.q_2)+(quiz.q_3)+(quiz.q_4)+(quiz.q_5)+(quiz.q_6)+(quiz.q_7)+(quiz.q_8)+(quiz.q_9)+(quiz.q_10)
     print(result)
-    
-    
+    quiz.result=result
+    db.session.add(quiz)
+    db.session.commit()
     return render_template ('ans.html', quiz=quiz, result=result )
 
 if __name__ == '__main__':
